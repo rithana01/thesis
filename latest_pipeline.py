@@ -2,12 +2,6 @@
 # CKD Thesis Pipeline — Bias-Aware (IFCM, C=3) + Hybrid MLP + Transformer
 # with EDA after combining real + synthetic training data
 # ============================================================
-# Usage:
-#   Train and evaluate:
-#       python rithana_full_pipeline.py
-#   Batch-score new patients:
-#       python rithana_full_pipeline.py --score patients.csv
-# ============================================================
 
 import os, sys, json, argparse, warnings
 warnings.filterwarnings("ignore")
@@ -39,7 +33,7 @@ import joblib
 from scipy import sparse as sp
 
 ROOT   = Path.cwd()
-PLOTS1 = ROOT / "plots1";    PLOTS1.mkdir(exist_ok=True)     # <— NEW plots folder
+PLOTS1 = ROOT / "plots1";    PLOTS1.mkdir(exist_ok=True)     
 ART    = ROOT / "artifacts"; ART.mkdir(exist_ok=True)
 RNG    = np.random.default_rng(42)
 
@@ -677,3 +671,4 @@ make_grid("pr",         "combined_pr_curves_all.png")
 make_grid("calibration","combined_calibration_all.png")
 
 print("NOTE: Real test is isolated from augmentation to avoid leakage/optimism.")
+
